@@ -1,105 +1,43 @@
-/* Global box-sizing */
+/* --------------------------------- */
+/* Reset & Base Styles */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-/* Body styling */
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.5;
+  color: #333;
 }
 
-/* Header */
+/* --------------------------------- */
+/* Header & Navigation */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: 16px;
   border-bottom: 1px solid #ddd;
-  background-color: #f9f9f9;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .nav a {
-  margin-right: 12px;
+  margin-left: 16px;
   text-decoration: none;
   color: #333;
+  transition: color 0.3s;
 }
 
-/* Container */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+.nav a:hover {
+  color: #0077cc;
 }
 
-/* Hero section */
-.hero {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px 0;
-  flex-wrap: wrap; /* Makes it responsive on small screens */
-  background-color: #f0f0f0;
-  border-radius: 8px;
-}
-
-.hero-text {
-  flex: 1 1 300px; /* Grows to fill space but keeps min width */
-}
-
-.hero-card {
-  flex: 0 0 240px;
-  padding: 16px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #fff;
-  text-align: center;
-}
-
-/* Grid section */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive */
-  gap: 12px;
-  padding: 20px 0;
-}
-
-.card {
-  border: 1px solid #ddd;
-  padding: 18px;
-  border-radius: 6px;
-  background-color: #fff;
-  text-align: center;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 10px 14px;
-  border: 1px solid black;
-  text-decoration: none;
-  color: black;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: black;
-  color: white;
-}
-
-/* Footer */
-.footer {
-  padding: 16px;
-  text-align: center;
-  border-top: 1px solid #ddd;
-  background-color: #f9f9f9;
-}
-/* --- Existing CSS above --- */
-
-/* Mobile header and navigation */
+/* Mobile nav stacking */
 @media (max-width: 600px) {
   .header {
     flex-direction: column;
@@ -114,36 +52,139 @@ body {
   }
 }
 
-/* Grid breakpoints */
+/* --------------------------------- */
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* --------------------------------- */
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 200px;
+  margin-right: 20px;
+}
+
+.hero-card {
+  flex: 0 0 240px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Mobile hero stacking */
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-text {
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+}
+
+/* --------------------------------- */
+/* Grid Section */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 20px 0;
+}
+
+/* Tablet breakpoint */
 @media (max-width: 900px) and (min-width: 601px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Mobile breakpoint */
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Card hover effect */
-.card:hover {
-  background-color: #f5f5f5;
-  transform: translateY(-2px);
-  transition: 0.3s;
+/* Grid cards */
+.card {
+  border: 1px solid #ddd;
+  padding: 18px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-/* Make images responsive */
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --------------------------------- */
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid black;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0077cc;
+  color: #fff;
+}
+
+/* --------------------------------- */
+/* Gallery Section */
+.gallery-section {
+  padding: 20px 0;
+}
+
 .responsive-img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Optional: style the caption */
+.responsive-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 figcaption {
   text-align: center;
-  margin-top: 8px;
+  margin-top: 12px;
   font-style: italic;
   color: #333;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------- */
+/* Footer */
+.footer {
+  padding: 16px;
+  text-align: center;
+  border-top: 1px solid #ddd;
 }
