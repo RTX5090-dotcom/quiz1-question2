@@ -132,3 +132,18 @@ body {
   transform: translateY(-2px);
   transition: 0.3s;
 }
+/* Make images responsive */
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Optional: style the caption */
+figcaption {
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+  color: #333;
+}
